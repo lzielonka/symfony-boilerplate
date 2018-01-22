@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new Propel\Bundle\PropelBundle\PropelBundle(),
             new AppBundle\AppBundle(),
             new ModelBundle\ModelBundle(),
+            new Repositories\RepositoriesBundle(),
+            new Services\ServicesBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

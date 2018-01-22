@@ -1,0 +1,5 @@
+services:
+    customer_fetcher:
+      class: Services\Customer\CustomerFetcher.php
+      arguments: ["@propel.customer_repository"]
+

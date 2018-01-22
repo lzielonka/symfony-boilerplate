@@ -9,7 +9,9 @@ class HomepageController extends Controller
 {
     public function indexAction(Request $request)
     {
-        return $this->render('default/index.html.twig', [
+        $this->get('customer_fetcher');
+
+        return $this->render('@AppBundle/Resources/views/Homepage/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }

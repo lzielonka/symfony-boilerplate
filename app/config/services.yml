@@ -33,3 +33,12 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    propel.customer_repository:
+      class: Repositories\Propel\CustomerRepository
+      public: true
+
+    customer_fetcher:
+      class: Services\Customer\CustomerFetcher
+      arguments: ["@propel.customer_repository"]
+      public: true
