@@ -1,4 +1,4 @@
-Symfony Standard Edition
+Symfony Boilerplate Project
 ========================
 
 Welcome to the Symfony Standard Edition - a fully-functional Symfony
@@ -16,11 +16,9 @@ The Symfony Standard Edition is configured with the following defaults:
 
   * Twig as the only configured template engine;
 
-  * Doctrine ORM/DBAL;
+  * Propel ORM
 
   * Swiftmailer;
-
-  * Annotations enabled for everything.
 
 It comes pre-configured with the following bundles:
 
@@ -29,7 +27,7 @@ It comes pre-configured with the following bundles:
   * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
     template and routing annotation capability
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+  * **PropelBundle** - Adds support for the Propel ORM
 
   * [**TwigBundle**][8] - Adds support for the Twig templating engine
 
