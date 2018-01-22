@@ -42,9 +42,12 @@ propel:
                 dsn:        pdo_mysql:host=%database_host%;dbname=%database_name%;charset=UTF8
     runtime:
         defaultConnection: default
-        connections: [default]
+        connections:
+            - default
     generator:
         defaultConnection: default
+        connections:
+            - default
 
 # Twig Configuration
 twig:
