@@ -1,3 +1,0 @@
-services:
-    propel.customer_repository:
-      class: Repositories\Propel\CustomerRepository.php
