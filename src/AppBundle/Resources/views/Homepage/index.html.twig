@@ -3,4 +3,7 @@
 {% block body %}
     {{ parent() }}
     <h1>Homepage</h1>
+    {% for customer in customers %}
+        {{ dump(customer) }}
+    {% endfor %}
 {% endblock %}

@@ -35,6 +35,8 @@ framework:
 
 # Propel Configuration
 propel:
+    paths:
+        schemaDir: ./src/ModelBundle/Propel/Config/
     database:
         connections:
             default:

@@ -5,3 +5,21 @@ services:
         autowire: true
         autoconfigure: true
         public: true
+
+# PDO
+    pdo_wrapper:
+        class: ModelBundle\PDO\Manager\PDOWrapper
+        arguments:
+             - '%database_host%'
+             - '%database_name%'
+             - '%database_user%'
+             - '%database_password%'
+             - '%database_charset%'
+
+    pdo_manager:
+        class: ModelBundle\PDO\Manager\PDOManager
+        arguments: ['@pdo_wrapper']
+
+# propel
+    propel_manager:
+        class: ModelBundle\Propel\Manager\ModelManager

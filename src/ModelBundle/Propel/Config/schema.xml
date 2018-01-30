@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<database namespace="ModelBundle\Propel\Model" name="default" defaultIdMethod="native"
-          defaultPhpNamingMethod="underscore">
-    <behavior name="ModelBundle\Propel\Behavior\ObjectFormatterBehavior"/>
-    <table name="product" idMethod="native" phpName="Product">
-        <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" autoIncrement="true"
-                required="true"/>
-        <index name="idx_product_product_id">
-            <index-column name="product_id"/>
-        </index>
+<database namespace="ModelBundle\Propel\Model" name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+<behavior name="ModelBundle\Propel\Behavior\ObjectFormatterBehavior"/>
+    <table name="customer" idMethod="native" phpName="Customer">
+        <column name="customer_id" phpName="CustomerId" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="email" phpName="Email" type="VARCHAR" size="255" required="true"/>
+        <column name="password_hash" phpName="PasswordHash" type="VARCHAR" size="255" required="true"/>
+        <unique name="customer_email_uindex">
+            <unique-column name="email"/>
+        </unique>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>

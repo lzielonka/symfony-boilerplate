@@ -18,9 +18,6 @@ class CustomerFetcher
         $this->customerRepository = $customerRepository;
     }
 
-    /**
-     * @return mixed
-     */
     public function fetchAllCustomers()
     {
         return $this->customerRepository->fetchAll();

@@ -4,5 +4,14 @@ services:
         autoconfigure: true
         public: false
 
+# propel repositories
+
     propel.customer_repository:
       class: Repositories\Propel\CustomerRepository
+      arguments: ['@propel_manager']
+
+# PDO repositories
+
+    pdo.customer_repository:
+       class: Repositories\PDO\CustomerRepository
+       arguments: ['@pdo_manager']
