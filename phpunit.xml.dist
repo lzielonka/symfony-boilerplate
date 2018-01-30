@@ -25,6 +25,10 @@
                 <directory>src/*Bundle/Resources</directory>
                 <directory>src/*/*Bundle/Resources</directory>
                 <directory>src/*/Bundle/*Bundle/Resources</directory>
+                <directory>src/AppBundle/Controller/*</directory>
+                <directory>src/AppBundle/Form/*</directory>
+                <directory>src/ModelBundle/*</directory>
+                <directory>src/Repositories/*</directory>
             </exclude>
         </whitelist>
     </filter>

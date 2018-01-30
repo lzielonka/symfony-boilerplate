@@ -1,0 +1,16 @@
+services:
+#    _defaults:
+#        autowire: true
+#        autoconfigure: true
+#        public: true
+
+    account_provider:
+        class: Services\Security\AccountProvider
+
+    account_login:
+        class: Services\Security\AccountLogin
+        arguments: ['@security.token_storage', '@session', '@event_dispatcher']
+
+    account_register:
+        class: Services\Security\AccountRegister
+        arguments: ['@security.encoder_factory']

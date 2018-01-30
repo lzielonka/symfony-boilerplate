@@ -6,6 +6,10 @@ services:
         autoconfigure: true
         public: true
 
+#AppBundle\:
+#     resource: '../../src/AppBundle/*'
+#     exclude: '../../src/Repositories'
+
 # PDO
     pdo_wrapper:
         class: ModelBundle\PDO\Manager\PDOWrapper

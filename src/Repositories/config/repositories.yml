@@ -6,12 +6,12 @@ services:
 
 # propel repositories
 
-    propel.customer_repository:
-      class: Repositories\Propel\CustomerRepository
+    propel.account_repository:
+      class: Repositories\Propel\AccountRepository
       arguments: ['@propel_manager']
 
 # PDO repositories
 
-    pdo.customer_repository:
-       class: Repositories\PDO\CustomerRepository
+    pdo.account_repository:
+       class: Repositories\PDO\AccountRepository
        arguments: ['@pdo_manager']

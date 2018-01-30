@@ -2,10 +2,10 @@
 
 namespace ModelBundle\Propel\Model;
 
-use ModelBundle\Propel\Model\Base\CustomerQuery as BaseCustomerQuery;
+use ModelBundle\Propel\Model\Base\AccountQuery as BaseAccountQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'customer' table.
+ * Skeleton subclass for performing query and update operations on the 'account' table.
  *
  *
  *
@@ -14,7 +14,7 @@ use ModelBundle\Propel\Model\Base\CustomerQuery as BaseCustomerQuery;
  * long as it does not already exist in the output directory.
  *
  */
-class CustomerQuery extends BaseCustomerQuery
+class AccountQuery extends BaseAccountQuery
 {
 
 }

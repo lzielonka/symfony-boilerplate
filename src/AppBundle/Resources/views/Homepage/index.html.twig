@@ -3,7 +3,9 @@
 {% block body %}
     {{ parent() }}
     <h1>Homepage</h1>
-    {% for customer in customers %}
-        {{ dump(customer) }}
+    {{ loginStatus }}
+    {{ dump(accounts) }}
+    {% for account in accounts %}
+        {{ dump(account) }}
     {% endfor %}
 {% endblock %}

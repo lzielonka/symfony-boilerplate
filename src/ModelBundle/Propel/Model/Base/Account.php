@@ -4,8 +4,8 @@ namespace ModelBundle\Propel\Model\Base;
 
 use \Exception;
 use \PDO;
-use ModelBundle\Propel\Model\CustomerQuery as ChildCustomerQuery;
-use ModelBundle\Propel\Model\Map\CustomerTableMap;
+use ModelBundle\Propel\Model\AccountQuery as ChildAccountQuery;
+use ModelBundle\Propel\Model\Map\AccountTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -19,18 +19,18 @@ use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Parser\AbstractParser;
 
 /**
- * Base class that represents a row from the 'customer' table.
+ * Base class that represents a row from the 'account' table.
  *
  *
  *
  * @package    propel.generator.src.ModelBundle.Propel.Model.Base
  */
-abstract class Customer implements ActiveRecordInterface
+abstract class Account implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\ModelBundle\\Propel\\Model\\Map\\CustomerTableMap';
+    const TABLE_MAP = '\\ModelBundle\\Propel\\Model\\Map\\AccountTableMap';
 
 
     /**
@@ -60,11 +60,11 @@ abstract class Customer implements ActiveRecordInterface
     protected $virtualColumns = array();
 
     /**
-     * The value for the customer_id field.
+     * The value for the account_id field.
      *
      * @var        int
      */
-    protected $customer_id;
+    protected $account_id;
 
     /**
      * The value for the email field.
@@ -89,7 +89,7 @@ abstract class Customer implements ActiveRecordInterface
     protected $alreadyInSave = false;
 
     /**
-     * Initializes internal state of ModelBundle\Propel\Model\Base\Customer object.
+     * Initializes internal state of ModelBundle\Propel\Model\Base\Account object.
      */
     public function __construct()
     {
@@ -184,9 +184,9 @@ abstract class Customer implements ActiveRecordInterface
     }
 
     /**
-     * Compares this with another <code>Customer</code> instance.  If
-     * <code>obj</code> is an instance of <code>Customer</code>, delegates to
-     * <code>equals(Customer)</code>.  Otherwise, returns <code>false</code>.
+     * Compares this with another <code>Account</code> instance.  If
+     * <code>obj</code> is an instance of <code>Account</code>, delegates to
+     * <code>equals(Account)</code>.  Otherwise, returns <code>false</code>.
      *
      * @param  mixed   $obj The object to compare to.
      * @return boolean Whether equal to the object specified.
@@ -252,7 +252,7 @@ abstract class Customer implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return $this|Customer The current object, for fluid interface
+     * @return $this|Account The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -314,13 +314,13 @@ abstract class Customer implements ActiveRecordInterface
     }
 
     /**
-     * Get the [customer_id] column value.
+     * Get the [account_id] column value.
      *
      * @return int
      */
-    public function getCustomerId()
+    public function getAccountId()
     {
-        return $this->customer_id;
+        return $this->account_id;
     }
 
     /**
@@ -344,30 +344,30 @@ abstract class Customer implements ActiveRecordInterface
     }
 
     /**
-     * Set the value of [customer_id] column.
+     * Set the value of [account_id] column.
      *
      * @param int $v new value
-     * @return $this|\ModelBundle\Propel\Model\Customer The current object (for fluent API support)
+     * @return $this|\ModelBundle\Propel\Model\Account The current object (for fluent API support)
      */
-    public function setCustomerId($v)
+    public function setAccountId($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->customer_id !== $v) {
-            $this->customer_id = $v;
-            $this->modifiedColumns[CustomerTableMap::COL_CUSTOMER_ID] = true;
+        if ($this->account_id !== $v) {
+            $this->account_id = $v;
+            $this->modifiedColumns[AccountTableMap::COL_ACCOUNT_ID] = true;
         }
 
         return $this;
-    } // setCustomerId()
+    } // setAccountId()
 
     /**
      * Set the value of [email] column.
      *
      * @param string $v new value
-     * @return $this|\ModelBundle\Propel\Model\Customer The current object (for fluent API support)
+     * @return $this|\ModelBundle\Propel\Model\Account The current object (for fluent API support)
      */
     public function setEmail($v)
     {
@@ -377,7 +377,7 @@ abstract class Customer implements ActiveRecordInterface
 
         if ($this->email !== $v) {
             $this->email = $v;
-            $this->modifiedColumns[CustomerTableMap::COL_EMAIL] = true;
+            $this->modifiedColumns[AccountTableMap::COL_EMAIL] = true;
         }
 
         return $this;
@@ -387,7 +387,7 @@ abstract class Customer implements ActiveRecordInterface
      * Set the value of [password_hash] column.
      *
      * @param string $v new value
-     * @return $this|\ModelBundle\Propel\Model\Customer The current object (for fluent API support)
+     * @return $this|\ModelBundle\Propel\Model\Account The current object (for fluent API support)
      */
     public function setPasswordHash($v)
     {
@@ -397,7 +397,7 @@ abstract class Customer implements ActiveRecordInterface
 
         if ($this->password_hash !== $v) {
             $this->password_hash = $v;
-            $this->modifiedColumns[CustomerTableMap::COL_PASSWORD_HASH] = true;
+            $this->modifiedColumns[AccountTableMap::COL_PASSWORD_HASH] = true;
         }
 
         return $this;
@@ -439,13 +439,13 @@ abstract class Customer implements ActiveRecordInterface
     {
         try {
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : CustomerTableMap::translateFieldName('CustomerId', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->customer_id = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : AccountTableMap::translateFieldName('AccountId', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->account_id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : CustomerTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : AccountTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $indexType)];
             $this->email = (null !== $col) ? (string) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : CustomerTableMap::translateFieldName('PasswordHash', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : AccountTableMap::translateFieldName('PasswordHash', TableMap::TYPE_PHPNAME, $indexType)];
             $this->password_hash = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
@@ -455,10 +455,10 @@ abstract class Customer implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 3; // 3 = CustomerTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 3; // 3 = AccountTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException(sprintf('Error populating %s object', '\\ModelBundle\\Propel\\Model\\Customer'), 0, $e);
+            throw new PropelException(sprintf('Error populating %s object', '\\ModelBundle\\Propel\\Model\\Account'), 0, $e);
         }
     }
 
@@ -500,13 +500,13 @@ abstract class Customer implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(CustomerTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(AccountTableMap::DATABASE_NAME);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $dataFetcher = ChildCustomerQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
+        $dataFetcher = ChildAccountQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
         $row = $dataFetcher->fetch();
         $dataFetcher->close();
         if (!$row) {
@@ -525,8 +525,8 @@ abstract class Customer implements ActiveRecordInterface
      * @param      ConnectionInterface $con
      * @return void
      * @throws PropelException
-     * @see Customer::setDeleted()
-     * @see Customer::isDeleted()
+     * @see Account::setDeleted()
+     * @see Account::isDeleted()
      */
     public function delete(ConnectionInterface $con = null)
     {
@@ -535,11 +535,11 @@ abstract class Customer implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(CustomerTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(AccountTableMap::DATABASE_NAME);
         }
 
         $con->transaction(function () use ($con) {
-            $deleteQuery = ChildCustomerQuery::create()
+            $deleteQuery = ChildAccountQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -574,7 +574,7 @@ abstract class Customer implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(CustomerTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(AccountTableMap::DATABASE_NAME);
         }
 
         return $con->transaction(function () use ($con) {
@@ -593,7 +593,7 @@ abstract class Customer implements ActiveRecordInterface
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                CustomerTableMap::addInstanceToPool($this);
+                AccountTableMap::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -650,24 +650,24 @@ abstract class Customer implements ActiveRecordInterface
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[CustomerTableMap::COL_CUSTOMER_ID] = true;
-        if (null !== $this->customer_id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . CustomerTableMap::COL_CUSTOMER_ID . ')');
+        $this->modifiedColumns[AccountTableMap::COL_ACCOUNT_ID] = true;
+        if (null !== $this->account_id) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . AccountTableMap::COL_ACCOUNT_ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(CustomerTableMap::COL_CUSTOMER_ID)) {
-            $modifiedColumns[':p' . $index++]  = 'customer_id';
+        if ($this->isColumnModified(AccountTableMap::COL_ACCOUNT_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'account_id';
         }
-        if ($this->isColumnModified(CustomerTableMap::COL_EMAIL)) {
+        if ($this->isColumnModified(AccountTableMap::COL_EMAIL)) {
             $modifiedColumns[':p' . $index++]  = 'email';
         }
-        if ($this->isColumnModified(CustomerTableMap::COL_PASSWORD_HASH)) {
+        if ($this->isColumnModified(AccountTableMap::COL_PASSWORD_HASH)) {
             $modifiedColumns[':p' . $index++]  = 'password_hash';
         }
 
         $sql = sprintf(
-            'INSERT INTO customer (%s) VALUES (%s)',
+            'INSERT INTO account (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -676,8 +676,8 @@ abstract class Customer implements ActiveRecordInterface
             $stmt = $con->prepare($sql);
             foreach ($modifiedColumns as $identifier => $columnName) {
                 switch ($columnName) {
-                    case 'customer_id':
-                        $stmt->bindValue($identifier, $this->customer_id, PDO::PARAM_INT);
+                    case 'account_id':
+                        $stmt->bindValue($identifier, $this->account_id, PDO::PARAM_INT);
                         break;
                     case 'email':
                         $stmt->bindValue($identifier, $this->email, PDO::PARAM_STR);
@@ -698,7 +698,7 @@ abstract class Customer implements ActiveRecordInterface
         } catch (Exception $e) {
             throw new PropelException('Unable to get autoincrement id.', 0, $e);
         }
-        $this->setCustomerId($pk);
+        $this->setAccountId($pk);
 
         $this->setNew(false);
     }
@@ -731,7 +731,7 @@ abstract class Customer implements ActiveRecordInterface
      */
     public function getByName($name, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = CustomerTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = AccountTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -748,7 +748,7 @@ abstract class Customer implements ActiveRecordInterface
     {
         switch ($pos) {
             case 0:
-                return $this->getCustomerId();
+                return $this->getAccountId();
                 break;
             case 1:
                 return $this->getEmail();
@@ -779,13 +779,13 @@ abstract class Customer implements ActiveRecordInterface
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
     {
 
-        if (isset($alreadyDumpedObjects['Customer'][$this->hashCode()])) {
+        if (isset($alreadyDumpedObjects['Account'][$this->hashCode()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['Customer'][$this->hashCode()] = true;
-        $keys = CustomerTableMap::getFieldNames($keyType);
+        $alreadyDumpedObjects['Account'][$this->hashCode()] = true;
+        $keys = AccountTableMap::getFieldNames($keyType);
         $result = array(
-            $keys[0] => $this->getCustomerId(),
+            $keys[0] => $this->getAccountId(),
             $keys[1] => $this->getEmail(),
             $keys[2] => $this->getPasswordHash(),
         );
@@ -807,11 +807,11 @@ abstract class Customer implements ActiveRecordInterface
      *                one of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *                Defaults to TableMap::TYPE_PHPNAME.
-     * @return $this|\ModelBundle\Propel\Model\Customer
+     * @return $this|\ModelBundle\Propel\Model\Account
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = CustomerTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = AccountTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
 
         return $this->setByPosition($pos, $value);
     }
@@ -822,13 +822,13 @@ abstract class Customer implements ActiveRecordInterface
      *
      * @param  int $pos position in xml schema
      * @param  mixed $value field value
-     * @return $this|\ModelBundle\Propel\Model\Customer
+     * @return $this|\ModelBundle\Propel\Model\Account
      */
     public function setByPosition($pos, $value)
     {
         switch ($pos) {
             case 0:
-                $this->setCustomerId($value);
+                $this->setAccountId($value);
                 break;
             case 1:
                 $this->setEmail($value);
@@ -860,10 +860,10 @@ abstract class Customer implements ActiveRecordInterface
      */
     public function fromArray($arr, $keyType = TableMap::TYPE_PHPNAME)
     {
-        $keys = CustomerTableMap::getFieldNames($keyType);
+        $keys = AccountTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) {
-            $this->setCustomerId($arr[$keys[0]]);
+            $this->setAccountId($arr[$keys[0]]);
         }
         if (array_key_exists($keys[1], $arr)) {
             $this->setEmail($arr[$keys[1]]);
@@ -890,7 +890,7 @@ abstract class Customer implements ActiveRecordInterface
      * @param string $data The source data to import from
      * @param string $keyType The type of keys the array uses.
      *
-     * @return $this|\ModelBundle\Propel\Model\Customer The current object, for fluid interface
+     * @return $this|\ModelBundle\Propel\Model\Account The current object, for fluid interface
      */
     public function importFrom($parser, $data, $keyType = TableMap::TYPE_PHPNAME)
     {
@@ -910,16 +910,16 @@ abstract class Customer implements ActiveRecordInterface
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(CustomerTableMap::DATABASE_NAME);
+        $criteria = new Criteria(AccountTableMap::DATABASE_NAME);
 
-        if ($this->isColumnModified(CustomerTableMap::COL_CUSTOMER_ID)) {
-            $criteria->add(CustomerTableMap::COL_CUSTOMER_ID, $this->customer_id);
+        if ($this->isColumnModified(AccountTableMap::COL_ACCOUNT_ID)) {
+            $criteria->add(AccountTableMap::COL_ACCOUNT_ID, $this->account_id);
         }
-        if ($this->isColumnModified(CustomerTableMap::COL_EMAIL)) {
-            $criteria->add(CustomerTableMap::COL_EMAIL, $this->email);
+        if ($this->isColumnModified(AccountTableMap::COL_EMAIL)) {
+            $criteria->add(AccountTableMap::COL_EMAIL, $this->email);
         }
-        if ($this->isColumnModified(CustomerTableMap::COL_PASSWORD_HASH)) {
-            $criteria->add(CustomerTableMap::COL_PASSWORD_HASH, $this->password_hash);
+        if ($this->isColumnModified(AccountTableMap::COL_PASSWORD_HASH)) {
+            $criteria->add(AccountTableMap::COL_PASSWORD_HASH, $this->password_hash);
         }
 
         return $criteria;
@@ -937,8 +937,8 @@ abstract class Customer implements ActiveRecordInterface
      */
     public function buildPkeyCriteria()
     {
-        $criteria = ChildCustomerQuery::create();
-        $criteria->add(CustomerTableMap::COL_CUSTOMER_ID, $this->customer_id);
+        $criteria = ChildAccountQuery::create();
+        $criteria->add(AccountTableMap::COL_ACCOUNT_ID, $this->account_id);
 
         return $criteria;
     }
@@ -951,7 +951,7 @@ abstract class Customer implements ActiveRecordInterface
      */
     public function hashCode()
     {
-        $validPk = null !== $this->getCustomerId();
+        $validPk = null !== $this->getAccountId();
 
         $validPrimaryKeyFKs = 0;
         $primaryKeyFKs = [];
@@ -971,18 +971,18 @@ abstract class Customer implements ActiveRecordInterface
      */
     public function getPrimaryKey()
     {
-        return $this->getCustomerId();
+        return $this->getAccountId();
     }
 
     /**
-     * Generic method to set the primary key (customer_id column).
+     * Generic method to set the primary key (account_id column).
      *
      * @param       int $key Primary key.
      * @return void
      */
     public function setPrimaryKey($key)
     {
-        $this->setCustomerId($key);
+        $this->setAccountId($key);
     }
 
     /**
@@ -991,7 +991,7 @@ abstract class Customer implements ActiveRecordInterface
      */
     public function isPrimaryKeyNull()
     {
-        return null === $this->getCustomerId();
+        return null === $this->getAccountId();
     }
 
     /**
@@ -1000,7 +1000,7 @@ abstract class Customer implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \ModelBundle\Propel\Model\Customer (or compatible) type.
+     * @param      object $copyObj An object of \ModelBundle\Propel\Model\Account (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
@@ -1011,7 +1011,7 @@ abstract class Customer implements ActiveRecordInterface
         $copyObj->setPasswordHash($this->getPasswordHash());
         if ($makeNew) {
             $copyObj->setNew(true);
-            $copyObj->setCustomerId(NULL); // this is a auto-increment column, so set to default value
+            $copyObj->setAccountId(NULL); // this is a auto-increment column, so set to default value
         }
     }
 
@@ -1024,7 +1024,7 @@ abstract class Customer implements ActiveRecordInterface
      * objects.
      *
      * @param  boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return \ModelBundle\Propel\Model\Customer Clone of current object.
+     * @return \ModelBundle\Propel\Model\Account Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1044,7 +1044,7 @@ abstract class Customer implements ActiveRecordInterface
      */
     public function clear()
     {
-        $this->customer_id = null;
+        $this->account_id = null;
         $this->email = null;
         $this->password_hash = null;
         $this->alreadyInSave = false;
@@ -1076,7 +1076,7 @@ abstract class Customer implements ActiveRecordInterface
      */
     public function __toString()
     {
-        return (string) $this->exportTo(CustomerTableMap::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(AccountTableMap::DEFAULT_STRING_FORMAT);
     }
 
     /**

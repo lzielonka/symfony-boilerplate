@@ -16,10 +16,9 @@ final class PDOManager
     /**
      * @param string $sql
      * @param array $params
-     * @param int $mode
      * @return \PDOStatement
      */
-    final public function executeSql(string $sql, array $params = [], int $mode = \PDO::FETCH_ASSOC): \PDOStatement
+    final public function executeSql(string $sql, array $params = []): \PDOStatement
     {
         $pdo = $this->pdoWrapper->getPDO();
         $stmt = $pdo->prepare($sql);

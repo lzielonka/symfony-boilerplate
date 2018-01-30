@@ -1,9 +1,14 @@
+imports:
+    - { resource: security.yml }
+
 services:
     _defaults:
         autowire: true
         autoconfigure: true
         public: true
 
-    customer_fetcher:
-      class: Services\Customer\CustomerFetcher
-      arguments: ["@propel.customer_repository"]
+# account
+
+    account_fetcher:
+      class: Services\Account\AccountFetcher
+      arguments: ["@propel.account_repository"]

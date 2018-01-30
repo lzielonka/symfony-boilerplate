@@ -2,8 +2,8 @@
 
 namespace ModelBundle\Propel\Model\Map;
 
-use ModelBundle\Propel\Model\Customer;
-use ModelBundle\Propel\Model\CustomerQuery;
+use ModelBundle\Propel\Model\Account;
+use ModelBundle\Propel\Model\AccountQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
@@ -16,7 +16,7 @@ use Propel\Runtime\Map\TableMapTrait;
 
 
 /**
- * This class defines the structure of the 'customer' table.
+ * This class defines the structure of the 'account' table.
  *
  *
  *
@@ -26,7 +26,7 @@ use Propel\Runtime\Map\TableMapTrait;
  * (i.e. if it's a text column type).
  *
  */
-class CustomerTableMap extends TableMap
+class AccountTableMap extends TableMap
 {
     use InstancePoolTrait;
     use TableMapTrait;
@@ -34,7 +34,7 @@ class CustomerTableMap extends TableMap
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'src.ModelBundle.Propel.Model.Map.CustomerTableMap';
+    const CLASS_NAME = 'src.ModelBundle.Propel.Model.Map.AccountTableMap';
 
     /**
      * The default database name for this class
@@ -44,17 +44,17 @@ class CustomerTableMap extends TableMap
     /**
      * The table name for this class
      */
-    const TABLE_NAME = 'customer';
+    const TABLE_NAME = 'account';
 
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\ModelBundle\\Propel\\Model\\Customer';
+    const OM_CLASS = '\\ModelBundle\\Propel\\Model\\Account';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'src.ModelBundle.Propel.Model.Customer';
+    const CLASS_DEFAULT = 'src.ModelBundle.Propel.Model.Account';
 
     /**
      * The total number of columns
@@ -72,19 +72,19 @@ class CustomerTableMap extends TableMap
     const NUM_HYDRATE_COLUMNS = 3;
 
     /**
-     * the column name for the customer_id field
+     * the column name for the account_id field
      */
-    const COL_CUSTOMER_ID = 'customer.customer_id';
+    const COL_ACCOUNT_ID = 'account.account_id';
 
     /**
      * the column name for the email field
      */
-    const COL_EMAIL = 'customer.email';
+    const COL_EMAIL = 'account.email';
 
     /**
      * the column name for the password_hash field
      */
-    const COL_PASSWORD_HASH = 'customer.password_hash';
+    const COL_PASSWORD_HASH = 'account.password_hash';
 
     /**
      * The default string format for model objects of the related table
@@ -98,10 +98,10 @@ class CustomerTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('CustomerId', 'Email', 'PasswordHash', ),
-        self::TYPE_CAMELNAME     => array('customerId', 'email', 'passwordHash', ),
-        self::TYPE_COLNAME       => array(CustomerTableMap::COL_CUSTOMER_ID, CustomerTableMap::COL_EMAIL, CustomerTableMap::COL_PASSWORD_HASH, ),
-        self::TYPE_FIELDNAME     => array('customer_id', 'email', 'password_hash', ),
+        self::TYPE_PHPNAME       => array('AccountId', 'Email', 'PasswordHash', ),
+        self::TYPE_CAMELNAME     => array('accountId', 'email', 'passwordHash', ),
+        self::TYPE_COLNAME       => array(AccountTableMap::COL_ACCOUNT_ID, AccountTableMap::COL_EMAIL, AccountTableMap::COL_PASSWORD_HASH, ),
+        self::TYPE_FIELDNAME     => array('account_id', 'email', 'password_hash', ),
         self::TYPE_NUM           => array(0, 1, 2, )
     );
 
@@ -112,10 +112,10 @@ class CustomerTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('CustomerId' => 0, 'Email' => 1, 'PasswordHash' => 2, ),
-        self::TYPE_CAMELNAME     => array('customerId' => 0, 'email' => 1, 'passwordHash' => 2, ),
-        self::TYPE_COLNAME       => array(CustomerTableMap::COL_CUSTOMER_ID => 0, CustomerTableMap::COL_EMAIL => 1, CustomerTableMap::COL_PASSWORD_HASH => 2, ),
-        self::TYPE_FIELDNAME     => array('customer_id' => 0, 'email' => 1, 'password_hash' => 2, ),
+        self::TYPE_PHPNAME       => array('AccountId' => 0, 'Email' => 1, 'PasswordHash' => 2, ),
+        self::TYPE_CAMELNAME     => array('accountId' => 0, 'email' => 1, 'passwordHash' => 2, ),
+        self::TYPE_COLNAME       => array(AccountTableMap::COL_ACCOUNT_ID => 0, AccountTableMap::COL_EMAIL => 1, AccountTableMap::COL_PASSWORD_HASH => 2, ),
+        self::TYPE_FIELDNAME     => array('account_id' => 0, 'email' => 1, 'password_hash' => 2, ),
         self::TYPE_NUM           => array(0, 1, 2, )
     );
 
@@ -129,14 +129,14 @@ class CustomerTableMap extends TableMap
     public function initialize()
     {
         // attributes
-        $this->setName('customer');
-        $this->setPhpName('Customer');
+        $this->setName('account');
+        $this->setPhpName('Account');
         $this->setIdentifierQuoting(false);
-        $this->setClassName('\\ModelBundle\\Propel\\Model\\Customer');
+        $this->setClassName('\\ModelBundle\\Propel\\Model\\Account');
         $this->setPackage('src.ModelBundle.Propel.Model');
         $this->setUseIdGenerator(true);
         // columns
-        $this->addPrimaryKey('customer_id', 'CustomerId', 'INTEGER', true, null, null);
+        $this->addPrimaryKey('account_id', 'AccountId', 'INTEGER', true, null, null);
         $this->addColumn('email', 'Email', 'VARCHAR', true, 255, null);
         $this->addColumn('password_hash', 'PasswordHash', 'VARCHAR', true, 255, null);
     } // initialize()
@@ -177,11 +177,11 @@ class CustomerTableMap extends TableMap
     public static function getPrimaryKeyHashFromRow($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
         // If the PK cannot be derived from the row, return NULL.
-        if ($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('CustomerId', TableMap::TYPE_PHPNAME, $indexType)] === null) {
+        if ($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('AccountId', TableMap::TYPE_PHPNAME, $indexType)] === null) {
             return null;
         }
 
-        return null === $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('CustomerId', TableMap::TYPE_PHPNAME, $indexType)] || is_scalar($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('CustomerId', TableMap::TYPE_PHPNAME, $indexType)]) || is_callable([$row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('CustomerId', TableMap::TYPE_PHPNAME, $indexType)], '__toString']) ? (string) $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('CustomerId', TableMap::TYPE_PHPNAME, $indexType)] : $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('CustomerId', TableMap::TYPE_PHPNAME, $indexType)];
+        return null === $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('AccountId', TableMap::TYPE_PHPNAME, $indexType)] || is_scalar($row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('AccountId', TableMap::TYPE_PHPNAME, $indexType)]) || is_callable([$row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('AccountId', TableMap::TYPE_PHPNAME, $indexType)], '__toString']) ? (string) $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('AccountId', TableMap::TYPE_PHPNAME, $indexType)] : $row[TableMap::TYPE_NUM == $indexType ? 0 + $offset : static::translateFieldName('AccountId', TableMap::TYPE_PHPNAME, $indexType)];
     }
 
     /**
@@ -201,7 +201,7 @@ class CustomerTableMap extends TableMap
         return (int) $row[
             $indexType == TableMap::TYPE_NUM
                 ? 0 + $offset
-                : self::translateFieldName('CustomerId', TableMap::TYPE_PHPNAME, $indexType)
+                : self::translateFieldName('AccountId', TableMap::TYPE_PHPNAME, $indexType)
         ];
     }
 
@@ -218,7 +218,7 @@ class CustomerTableMap extends TableMap
      */
     public static function getOMClass($withPrefix = true)
     {
-        return $withPrefix ? CustomerTableMap::CLASS_DEFAULT : CustomerTableMap::OM_CLASS;
+        return $withPrefix ? AccountTableMap::CLASS_DEFAULT : AccountTableMap::OM_CLASS;
     }
 
     /**
@@ -232,22 +232,22 @@ class CustomerTableMap extends TableMap
      *
      * @throws PropelException Any exceptions caught during processing will be
      *                         rethrown wrapped into a PropelException.
-     * @return array           (Customer object, last column rank)
+     * @return array           (Account object, last column rank)
      */
     public static function populateObject($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        $key = CustomerTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
-        if (null !== ($obj = CustomerTableMap::getInstanceFromPool($key))) {
+        $key = AccountTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
+        if (null !== ($obj = AccountTableMap::getInstanceFromPool($key))) {
             // We no longer rehydrate the object, since this can cause data loss.
             // See http://www.propelorm.org/ticket/509
             // $obj->hydrate($row, $offset, true); // rehydrate
-            $col = $offset + CustomerTableMap::NUM_HYDRATE_COLUMNS;
+            $col = $offset + AccountTableMap::NUM_HYDRATE_COLUMNS;
         } else {
-            $cls = CustomerTableMap::OM_CLASS;
-            /** @var Customer $obj */
+            $cls = AccountTableMap::OM_CLASS;
+            /** @var Account $obj */
             $obj = new $cls();
             $col = $obj->hydrate($row, $offset, false, $indexType);
-            CustomerTableMap::addInstanceToPool($obj, $key);
+            AccountTableMap::addInstanceToPool($obj, $key);
         }
 
         return array($obj, $col);
@@ -270,18 +270,18 @@ class CustomerTableMap extends TableMap
         $cls = static::getOMClass(false);
         // populate the object(s)
         while ($row = $dataFetcher->fetch()) {
-            $key = CustomerTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
-            if (null !== ($obj = CustomerTableMap::getInstanceFromPool($key))) {
+            $key = AccountTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
+            if (null !== ($obj = AccountTableMap::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://www.propelorm.org/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
                 $results[] = $obj;
             } else {
-                /** @var Customer $obj */
+                /** @var Account $obj */
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                CustomerTableMap::addInstanceToPool($obj, $key);
+                AccountTableMap::addInstanceToPool($obj, $key);
             } // if key exists
         }
 
@@ -302,11 +302,11 @@ class CustomerTableMap extends TableMap
     public static function addSelectColumns(Criteria $criteria, $alias = null)
     {
         if (null === $alias) {
-            $criteria->addSelectColumn(CustomerTableMap::COL_CUSTOMER_ID);
-            $criteria->addSelectColumn(CustomerTableMap::COL_EMAIL);
-            $criteria->addSelectColumn(CustomerTableMap::COL_PASSWORD_HASH);
+            $criteria->addSelectColumn(AccountTableMap::COL_ACCOUNT_ID);
+            $criteria->addSelectColumn(AccountTableMap::COL_EMAIL);
+            $criteria->addSelectColumn(AccountTableMap::COL_PASSWORD_HASH);
         } else {
-            $criteria->addSelectColumn($alias . '.customer_id');
+            $criteria->addSelectColumn($alias . '.account_id');
             $criteria->addSelectColumn($alias . '.email');
             $criteria->addSelectColumn($alias . '.password_hash');
         }
@@ -321,7 +321,7 @@ class CustomerTableMap extends TableMap
      */
     public static function getTableMap()
     {
-        return Propel::getServiceContainer()->getDatabaseMap(CustomerTableMap::DATABASE_NAME)->getTable(CustomerTableMap::TABLE_NAME);
+        return Propel::getServiceContainer()->getDatabaseMap(AccountTableMap::DATABASE_NAME)->getTable(AccountTableMap::TABLE_NAME);
     }
 
     /**
@@ -329,16 +329,16 @@ class CustomerTableMap extends TableMap
      */
     public static function buildTableMap()
     {
-        $dbMap = Propel::getServiceContainer()->getDatabaseMap(CustomerTableMap::DATABASE_NAME);
-        if (!$dbMap->hasTable(CustomerTableMap::TABLE_NAME)) {
-            $dbMap->addTableObject(new CustomerTableMap());
+        $dbMap = Propel::getServiceContainer()->getDatabaseMap(AccountTableMap::DATABASE_NAME);
+        if (!$dbMap->hasTable(AccountTableMap::TABLE_NAME)) {
+            $dbMap->addTableObject(new AccountTableMap());
         }
     }
 
     /**
-     * Performs a DELETE on the database, given a Customer or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a Account or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or Customer object or primary key or array of primary keys
+     * @param mixed               $values Criteria or Account object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param  ConnectionInterface $con the connection to use
      * @return int             The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -349,27 +349,27 @@ class CustomerTableMap extends TableMap
      public static function doDelete($values, ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(CustomerTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(AccountTableMap::DATABASE_NAME);
         }
 
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \ModelBundle\Propel\Model\Customer) { // it's a model object
+        } elseif ($values instanceof \ModelBundle\Propel\Model\Account) { // it's a model object
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks
-            $criteria = new Criteria(CustomerTableMap::DATABASE_NAME);
-            $criteria->add(CustomerTableMap::COL_CUSTOMER_ID, (array) $values, Criteria::IN);
+            $criteria = new Criteria(AccountTableMap::DATABASE_NAME);
+            $criteria->add(AccountTableMap::COL_ACCOUNT_ID, (array) $values, Criteria::IN);
         }
 
-        $query = CustomerQuery::create()->mergeWith($criteria);
+        $query = AccountQuery::create()->mergeWith($criteria);
 
         if ($values instanceof Criteria) {
-            CustomerTableMap::clearInstancePool();
+            AccountTableMap::clearInstancePool();
         } elseif (!is_object($values)) { // it's a primary key, or an array of pks
             foreach ((array) $values as $singleval) {
-                CustomerTableMap::removeInstanceFromPool($singleval);
+                AccountTableMap::removeInstanceFromPool($singleval);
             }
         }
 
@@ -377,20 +377,20 @@ class CustomerTableMap extends TableMap
     }
 
     /**
-     * Deletes all rows from the customer table.
+     * Deletes all rows from the account table.
      *
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).
      */
     public static function doDeleteAll(ConnectionInterface $con = null)
     {
-        return CustomerQuery::create()->doDeleteAll($con);
+        return AccountQuery::create()->doDeleteAll($con);
     }
 
     /**
-     * Performs an INSERT on the database, given a Customer or Criteria object.
+     * Performs an INSERT on the database, given a Account or Criteria object.
      *
-     * @param mixed               $criteria Criteria or Customer object containing data that is used to create the INSERT statement.
+     * @param mixed               $criteria Criteria or Account object containing data that is used to create the INSERT statement.
      * @param ConnectionInterface $con the ConnectionInterface connection to use
      * @return mixed           The new primary key.
      * @throws PropelException Any exceptions caught during processing will be
@@ -399,22 +399,22 @@ class CustomerTableMap extends TableMap
     public static function doInsert($criteria, ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(CustomerTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(AccountTableMap::DATABASE_NAME);
         }
 
         if ($criteria instanceof Criteria) {
             $criteria = clone $criteria; // rename for clarity
         } else {
-            $criteria = $criteria->buildCriteria(); // build Criteria from Customer object
+            $criteria = $criteria->buildCriteria(); // build Criteria from Account object
         }
 
-        if ($criteria->containsKey(CustomerTableMap::COL_CUSTOMER_ID) && $criteria->keyContainsValue(CustomerTableMap::COL_CUSTOMER_ID) ) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key ('.CustomerTableMap::COL_CUSTOMER_ID.')');
+        if ($criteria->containsKey(AccountTableMap::COL_ACCOUNT_ID) && $criteria->keyContainsValue(AccountTableMap::COL_ACCOUNT_ID) ) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key ('.AccountTableMap::COL_ACCOUNT_ID.')');
         }
 
 
         // Set the correct dbName
-        $query = CustomerQuery::create()->mergeWith($criteria);
+        $query = AccountQuery::create()->mergeWith($criteria);
 
         // use transaction because $criteria could contain info
         // for more than one table (I guess, conceivably)
@@ -423,7 +423,7 @@ class CustomerTableMap extends TableMap
         });
     }
 
-} // CustomerTableMap
+} // AccountTableMap
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-CustomerTableMap::buildTableMap();
+AccountTableMap::buildTableMap();
