@@ -2,7 +2,7 @@
 
 namespace Tests\Stubs;
 
-use ModelBundle\Propel\Collection\ObjectCollection;
+use AppBundle\Database\Propel\Collection\ObjectCollection;
 
 class ObjectCollectionStub extends ObjectCollection
 {

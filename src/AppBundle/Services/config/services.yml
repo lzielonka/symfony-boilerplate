@@ -1,0 +1,14 @@
+imports:
+    - { resource: security.yml }
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+# account
+
+    account_fetcher:
+      class: AppBundle\Services\Account\AccountFetcher
+      arguments: ["@propel.account_repository"]

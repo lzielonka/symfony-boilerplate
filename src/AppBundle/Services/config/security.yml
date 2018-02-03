@@ -1,0 +1,16 @@
+services:
+#    _defaults:
+#        autowire: true
+#        autoconfigure: true
+#        public: true
+
+    account_provider:
+        class: AppBundle\Services\Security\AccountProvider
+
+    account_login:
+        class: AppBundle\Services\Security\AccountLogin
+        arguments: ['@security.token_storage', '@session', '@event_dispatcher']
+
+    account_register:
+        class: AppBundle\Services\Security\AccountRegister
+        arguments: ['@security.encoder_factory']

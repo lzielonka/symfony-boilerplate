@@ -1,6 +1,4 @@
-homepage:
-    path:     /
-    defaults: { _controller: AppBundle:Homepage\Homepage:index }
+# user login/registration
 
 register:
     path:     /register
@@ -15,3 +13,9 @@ login_check:
 
 logout:
     path:     /logout
+
+# pages
+
+homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Homepage\Homepage:index }

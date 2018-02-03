@@ -2,8 +2,8 @@
 
 namespace AppBundle\Controller\Security;
 
+use AppBundle\Database\Propel\Model\Account;
 use AppBundle\Form\AccountType;
-use ModelBundle\Propel\Model\Account;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 

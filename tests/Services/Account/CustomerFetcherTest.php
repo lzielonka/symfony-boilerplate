@@ -2,10 +2,11 @@
 
 namespace Services\Account;
 
-use ModelBundle\Propel\Model\Account;
+use AppBundle\Database\Propel\Model\Account;
+use AppBundle\Repositories\Interfaces\AccountRepositoryInterface;
+use AppBundle\Services\Account\AccountFetcher;
 use PHPUnit_Framework_MockObject_MockObject;
 use Propel\Runtime\Collection\ObjectCollection;
-use Repositories\Interfaces\AccountRepositoryInterface;
 use Tests\PrivateAccessTestCase;
 use Tests\Stubs\Account\AccountStub;
 use Tests\Stubs\ObjectCollectionStub;

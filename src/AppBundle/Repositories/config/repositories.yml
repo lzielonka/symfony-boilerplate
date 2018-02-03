@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+# propel repositories
+
+    propel.account_repository:
+      class: AppBundle\Repositories\Propel\AccountRepository
+      arguments: ['@propel_manager']
+
+# PDO repositories
+
+    pdo.account_repository:
+       class: AppBundle\Repositories\PDO\AccountRepository
+       arguments: ['@pdo_manager']

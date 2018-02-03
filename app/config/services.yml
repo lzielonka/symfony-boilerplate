@@ -1,3 +1,7 @@
+imports:
+    - { resource: "@AppBundle/Services/config/services.yml" }
+    - { resource: "@AppBundle/Repositories/config/repositories.yml" }
+
 parameters:
 
 services:
@@ -8,11 +12,12 @@ services:
 
 #AppBundle\:
 #     resource: '../../src/AppBundle/*'
-#     exclude: '../../src/Repositories'
+#     exclude: '../../src/AppBundle/Repositories'
 
 # PDO
     pdo_wrapper:
-        class: ModelBundle\PDO\Manager\PDOWrapper
+        public: false
+        class: AppBundle\Database\PDO\Manager\PDOWrapper
         arguments:
              - '%database_host%'
              - '%database_name%'
@@ -21,9 +26,9 @@ services:
              - '%database_charset%'
 
     pdo_manager:
-        class: ModelBundle\PDO\Manager\PDOManager
+        class: Appbundle\Database\PDO\Manager\PDOManager
         arguments: ['@pdo_wrapper']
 
 # propel
     propel_manager:
-        class: ModelBundle\Propel\Manager\ModelManager
+        class: AppBundle\Database\Propel\Manager\ModelManager

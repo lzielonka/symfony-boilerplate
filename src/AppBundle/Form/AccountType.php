@@ -2,7 +2,7 @@
 
 namespace AppBundle\Form;
 
-use ModelBundle\Propel\Model\Account;
+use AppBundle\Database\Propel\Model\Account;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
