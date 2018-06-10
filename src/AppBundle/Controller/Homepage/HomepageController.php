@@ -12,9 +12,8 @@ class HomepageController extends Controller
         $accountFetcher = $this->get('account_fetcher');
         $accounts = $accountFetcher->fetchAllAccounts();
 
-        return $this->render('@App/Homepage/index.html.twig', [
+        return $this->render('@App/Homepage/homepage.html.twig', [
             'accounts' => $accounts,
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
         ]);
     }
 }

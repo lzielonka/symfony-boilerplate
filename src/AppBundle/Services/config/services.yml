@@ -8,8 +8,7 @@ services:
         public: true
 
 # account
-
-    app.contains_available_lang_validator:
+    email_unique_validator:
         class: AppBundle\Form\Validators\EmailUniqueValidator
         arguments: ['@account_fetcher']
 
