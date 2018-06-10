@@ -41,12 +41,11 @@ class AccountLogin
      * @param Request $request
      * @throws \InvalidArgumentException
      */
-    public function authenticateByUser(Account $account, Request $request)
+    public function loginAccount(Account $account, Request $request)
     {
         $token = new UsernamePasswordToken($account, null, 'secured_area', $account->getRoles());
         $this->tokenStorage->setToken($token);
-        // Fire the login event
-        // Logging the user in above the way we do it doesn't do this automatically
+
         $event = new InteractiveLoginEvent($request, $token);
         $this->dispatcher->dispatch(SecurityEvents::INTERACTIVE_LOGIN, $event);
     }

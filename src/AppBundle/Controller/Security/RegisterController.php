@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller\Security;
 
-use AppBundle\Database\Propel\Model\Account;
 use AppBundle\Form\RegisterType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,13 +16,15 @@ class RegisterController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $account = $form->getData();
-                /** @var Account $account */
+                try {
                     $this->get('account_register')->registerAccount($account);
-                    $this->get('account_login')->authenticateByUser($account, $request);
+                    $this->get('account_login')->loginAccount($account, $request);
 
                     return $this->redirectToRoute('homepage');
+                } catch (\Exception $e) {
+                    $this->addFlash('error', 'failed_to_register_account');
+                }
             }
-            $this->addFlash('error', 'email already in use');
         }
 
         return $this->render('@App/Security/register.html.twig', [

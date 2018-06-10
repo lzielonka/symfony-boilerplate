@@ -48,7 +48,7 @@ class Account extends BaseAccount implements UserInterface
      */
     public function getPassword()
     {
-        return $this->passwd;
+        return $this->getPasswd();
     }
 
     /**
