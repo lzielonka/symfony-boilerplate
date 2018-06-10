@@ -22,37 +22,40 @@ class AccountRegister
 
     /**
      * @param Account $formAccount
+     * @return Account
      * @throws PropelException
      */
-    public function registerAccount(Account $formAccount)
+    public function registerAccount(Account $formAccount): Account
     {
+        $salt = $this->generateSalt();
+        $encodedPassword = $this->encodePassword($formAccount, $salt);
+
         $newAccount = new Account;
         $newAccount
             ->setEmail($formAccount->getEmail())
-            ->setSalt($this->generateSalt());
-
-        $encodedPassword = $this->encodePassword($newAccount, $formAccount->getPasswd());
-        $newAccount
+            ->setSalt($salt)
             ->setPasswd($encodedPassword)
             ->save();
+
+        return $newAccount;
     }
 
     /**
      * @param UserInterface $account
-     * @param $password
-     * @return bool
+     * @param $salt
+     * @return string
      */
-    public function encodePassword(UserInterface $account, $password)
+    public function encodePassword(UserInterface $account, $salt): string
     {
         $encoder = $this->encoderFactory->getEncoder($account);
         
-        return $encoder->encodePassword($password, $account->getSalt());
+        return $encoder->encodePassword($account->getPassword(), $salt);
     }
 
     /**
      * @return string
      */
-    private function generateSalt()
+    private function generateSalt(): string
     {
         return substr(md5(mt_rand()), 0, 5);
     }

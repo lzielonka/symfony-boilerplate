@@ -3,7 +3,7 @@
 namespace AppBundle\Services\Security;
 
 use AppBundle\Database\Propel\Model\Account;
-use AppBundle\Database\Propel\Model\AccountQuery;
+use AppBundle\Services\Account\AccountFetcher;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -11,6 +11,14 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class AccountProvider implements UserProviderInterface
 {
+    /** @var AccountFetcher */
+    private $accountFetcher;
+
+    public function __construct(AccountFetcher $accountFetcher)
+    {
+        $this->accountFetcher = $accountFetcher;
+    }
+
     /**
      * @param string $email
      * @return Account|UserInterface
@@ -18,16 +26,12 @@ class AccountProvider implements UserProviderInterface
      */
     public function loadUserByUsername($email)
     {
-        $account = AccountQuery::create()
-            ->filterByEmail($email)
-            ->findOne();
-        if ($account) {
-            return $account;
+        $account = $this->accountFetcher->fetchOneByEmail($email);
+        if (!$account) {
+            throw new UsernameNotFoundException('Invalid login information');
         }
 
-        throw new UsernameNotFoundException(
-            'Invalid login information'
-        );
+        return $account;
     }
 
     /**
@@ -41,7 +45,7 @@ class AccountProvider implements UserProviderInterface
             throw new UnsupportedUserException('Invalid account');
         }
 
-        return $account;
+        return $this->loadUserByUsername($account->getEmail());
     }
 
     /**

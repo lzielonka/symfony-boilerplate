@@ -6,6 +6,7 @@ services:
 
     account_provider:
         class: AppBundle\Services\Security\AccountProvider
+        arguments: ['@account_fetcher']
 
     account_login:
         class: AppBundle\Services\Security\AccountLogin
