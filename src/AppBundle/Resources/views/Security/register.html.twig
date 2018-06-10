@@ -1,4 +1,40 @@
-<form action="{{ path('register') }}" method="post">
-    {{ form_widget(form) }}
-    <button type="submit">register</button>
-</form>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6 col-sm-12">
+            <form action="{{ path('register') }}" method="POST">
+                <p class="h4 text-center mb-4">{{ 'register__sign_up'|trans }}</p>
+                {#<div class="md-form">#}
+                    {#<i class="fa fa-user prefix grey-text"></i>#}
+                    {#<input type="text" id="materialFormRegisterNameEx" class="form-control">#}
+                    {#<label for="materialFormRegisterNameEx">{{ 'sign_up'|trans }}</label>#}
+                {#</div>#}
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    {{ form_widget(form.email) }}
+                    {{ form_label(form.email, 'register__email') }}
+                    {{ form_errors(form.email) }}
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    {{ form_widget(form.passwd) }}
+                    {{ form_label(form.passwd, 'register__password') }}
+                    {{ form_errors(form.passwd) }}
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    {{ form_widget(form.passwdRepeat) }}
+                    {{ form_label(form.passwdRepeat, 'register__repeat_password') }}
+                    {{ form_errors(form.passwdRepeat) }}
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary" type="submit">{{ 'register__submit' }}</button>
+                </div>
+                {{ form_widget(form._token) }}
+            </form>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+{% endblock %}

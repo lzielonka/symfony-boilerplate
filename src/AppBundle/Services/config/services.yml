@@ -9,6 +9,10 @@ services:
 
 # account
 
+    app.contains_available_lang_validator:
+        class: AppBundle\Form\Validators\EmailUniqueValidator
+        arguments: ['@account_fetcher']
+
     account_fetcher:
       class: AppBundle\Services\Account\AccountFetcher
-      arguments: ["@propel.account_repository"]
+      arguments: ["@pdo.account_repository"]

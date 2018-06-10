@@ -24,7 +24,7 @@ class AccountRepository implements AccountRepositoryInterface
         $sql = "SELECT * FROM account";
         $results = $this->manager->executeSql($sql);
 
-        return $results->fetchAll(\PDO::FETCH_CLASS, $this->modelClass);
+        return $results->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     /**

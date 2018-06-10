@@ -11,7 +11,7 @@ security:
 
     encoders:
          AppBundle\Database\Propel\Model\Account:
-             algorithm: sha512
+             algorithm: sha256
              encode_as_base64: false
              iterations: 1
 

@@ -26,7 +26,7 @@ services:
              - '%database_charset%'
 
     pdo_manager:
-        class: Appbundle\Database\PDO\Manager\PDOManager
+        class: AppBundle\Database\PDO\Manager\PDOManager
         arguments: ['@pdo_wrapper']
 
 # propel

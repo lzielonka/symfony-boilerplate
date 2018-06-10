@@ -19,3 +19,9 @@ logout:
 homepage:
     path:     /
     defaults: { _controller: AppBundle:Homepage\Homepage:index }
+
+# api
+
+accounts:
+    path:    /accounts
+    defaults: { _controller: AppBundle:Api\Accounts\Accounts:index }

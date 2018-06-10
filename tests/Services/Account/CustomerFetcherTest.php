@@ -24,7 +24,7 @@ class CustomerFetcherTest extends PrivateAccessTestCase
         $this->accountFetcher = new AccountFetcher($this->accountRepository);
     }
 
-    public function testFetchAllCustomers()
+    public function testFetchAllAccounts()
     {
         $oc = new ObjectCollectionStub;
         $oc->append(new AccountStub);

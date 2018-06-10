@@ -38,11 +38,12 @@ class AccountRegister
     public function registerByEmailAndPassword($email, $plainPassword = null)
     {
         $account = (new Account)
+            ->setSalt($this->generateSalt())
             ->setEmail($email);
 
         $encodedPassword = $this->encodePassword($account, $plainPassword);
         $account
-            ->setPasswordHash($encodedPassword)
+            ->setPasswd($encodedPassword)
             ->save();
 
         return $account;
@@ -58,5 +59,10 @@ class AccountRegister
         $encoder = $this->encoderFactory->getEncoder($account);
         
         return $encoder->encodePassword($password, $account->getSalt());
+    }
+
+    private function generateSalt()
+    {
+        return substr(md5(mt_rand()), 0, 5);
     }
 }

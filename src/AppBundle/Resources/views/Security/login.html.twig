@@ -1,13 +1,31 @@
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+{% extends 'base.html.twig' %}
 
-<form action="{{ path('login') }}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+{% block title %}{{ 'login__title'|trans }}{% endblock %}
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" />
-
-    <button type="submit">login</button>
-</form>
+{% block body %}
+    <div class="row">
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6 col-sm-12">
+            <form action="{{ path('login') }}" method="POST">
+                <p class="h4 text-center mb-4">{{ 'login__log_in'|trans }}</p>
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_email }}" />
+                    <label for="username">{{ 'login__email'|trans }}</label>
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <input class="form-control" type="password" id="password" name="_password" />
+                    <label for="password">{{ 'login__password'|trans }}</label>
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary" type="submit">{{ 'login__submit' }}</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+{% endblock %}
