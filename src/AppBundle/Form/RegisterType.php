@@ -3,13 +3,15 @@
 namespace AppBundle\Form;
 
 use AppBundle\Database\Propel\Model\Account;
+use AppBundle\Form\Constraints\EmailFormat;
 use AppBundle\Form\Constraints\EmailUnique;
+use AppBundle\Form\Constraints\PasswordStrength;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegisterType extends AbstractType
 {
@@ -17,19 +19,23 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'attr' => ['class' => 'form-control', 'type' => 'email'],
-                'label_attr' => ['class' =>  'abc'],
-                'constraints' => new EmailUnique
+                'attr' => [
+                    'class' => 'form-control',
+                    'type' => 'email'
+                ],
+                'constraints' => [new EmailUnique, new EmailFormat]
             ])
-            ->add('passwd', PasswordType::class, [
-                'attr' => ['class' => 'form-control', 'type' => 'password'],
-                'required' => false
-            ])
-            ->add('passwdRepeat', PasswordType::class, [
-                'attr' => ['class' => 'form-control', 'type' => 'password'],
-                'mapped' => false,
-                'required' => false,
-                'constraints' => new NotBlank()
+            ->add('passwd', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'password_fields_must_match',
+                'constraints' => [new PasswordStrength],
+                'first_options' => [
+                    'attr' => ['class' => 'form-control', 'type' => 'password'],
+                ],
+                'second_options' => [
+                    'attr' => ['class' => 'form-control', 'type' => 'password'],
+                ],
+                'required' => true
             ]);
     }
 

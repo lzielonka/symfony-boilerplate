@@ -19,15 +19,15 @@
                 </div>
                 <div class="md-form">
                     <i class="fa fa-lock prefix grey-text"></i>
-                    {{ form_widget(form.passwd) }}
-                    {{ form_label(form.passwd, 'register__password') }}
-                    {{ form_errors(form.passwd) }}
+                    {{ form_widget(form.passwd.first) }}
+                    {{ form_label(form.passwd.first, 'register__password') }}
+                    {{ form_errors(form.passwd.first) }}
                 </div>
                 <div class="md-form">
                     <i class="fa fa-lock prefix grey-text"></i>
-                    {{ form_widget(form.passwdRepeat) }}
-                    {{ form_label(form.passwdRepeat, 'register__repeat_password') }}
-                    {{ form_errors(form.passwdRepeat) }}
+                    {{ form_widget(form.passwd.second) }}
+                    {{ form_label(form.passwd.second, 'register__repeat_password') }}
+                    {{ form_errors(form.passwd.second) }}
                 </div>
                 <div class="text-center mt-4">
                     <button class="btn btn-primary" type="submit">{{ 'register__submit' }}</button>

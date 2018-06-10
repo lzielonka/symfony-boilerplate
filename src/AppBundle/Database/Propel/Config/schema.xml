@@ -4,7 +4,7 @@
     <table name="account" idMethod="native" phpName="Account">
         <column name="account_id" phpName="AccountId" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="email" phpName="Email" type="VARCHAR" size="255" required="true"/>
-        <column name="passwd" phpName="Passwd" type="VARCHAR" size="255" required="true"/>
+        <column name="passwd" phpName="Passwd" type="CHAR" size="64" required="true"/>
         <column name="salt" phpName="Salt" type="CHAR" size="5" required="true"/>
         <unique name="account_email_uindex">
             <unique-column name="email"/>

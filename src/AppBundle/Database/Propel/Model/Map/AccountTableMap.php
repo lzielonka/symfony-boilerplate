@@ -143,7 +143,7 @@ class AccountTableMap extends TableMap
         // columns
         $this->addPrimaryKey('account_id', 'AccountId', 'INTEGER', true, null, null);
         $this->addColumn('email', 'Email', 'VARCHAR', true, 255, null);
-        $this->addColumn('passwd', 'Passwd', 'VARCHAR', true, 255, null);
+        $this->addColumn('passwd', 'Passwd', 'CHAR', true, 64, null);
         $this->addColumn('salt', 'Salt', 'CHAR', true, 5, null);
     } // initialize()
 

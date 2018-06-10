@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller\Homepage;
 
-use AppBundle\Database\Propel\Model\Account;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
