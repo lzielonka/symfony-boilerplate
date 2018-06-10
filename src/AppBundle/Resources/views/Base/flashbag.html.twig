@@ -1,0 +1,16 @@
+<div class="flashbag-container">
+    {% set errorFlashes = app.session.flashBag.get('error') %}
+    {% if errorFlashes|length %}
+        {{ include('@App/Base/partials/flash.html.twig', {'type': 'error', 'flashes': errorFlashes }) }}
+    {% endif %}
+
+    {% set successFlashes = app.session.flashBag.get('success') %}
+    {% if successFlashes|length %}
+        {{ include('@App/Base/partials/flash.html.twig', {'type': 'success', 'flashes': successFlashes }) }}
+    {% endif %}
+
+    {% set warniungFlashes = app.session.flashBag.get('warning') %}
+    {% if warniungFlashes|length %}
+        {{ include('@App/Base/partials/flash.html.twig', {'type': 'warning', 'flashes': warniungFlashes }) }}
+{% endif %}
+</div>

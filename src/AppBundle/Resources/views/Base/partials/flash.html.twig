@@ -1,0 +1,12 @@
+<div class="alert alert-dismissible flash {{
+    type == 'error' ? 'alert-danger' :
+    type == 'warning' ? 'alert-warning' :
+    'alert-success'
+}}">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <div class="flash-text">
+        {% for flash in flashes %}
+            {{ flash|raw|capitalize }}<br/>
+        {% endfor %}
+    </div>
+</div>
