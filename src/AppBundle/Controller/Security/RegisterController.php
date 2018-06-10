@@ -17,8 +17,8 @@ class RegisterController extends Controller
             if ($form->isValid()) {
                 $account = $form->getData();
                 try {
-                    $this->get('account_register')->registerAccount($account);
-                    $this->get('account_login')->loginAccount($account, $request);
+                    $registeredAccount = $this->get('account_register')->registerAccount($account);
+                    $this->get('account_login')->loginAccount($registeredAccount, $request);
 
                     return $this->redirectToRoute('homepage');
                 } catch (\Exception $e) {
