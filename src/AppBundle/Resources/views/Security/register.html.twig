@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ 'register__title'|trans }}{% endblock %}
+
 {% block body %}
     <div class="row">
         <div class="col-md-3">&nbsp;</div>
@@ -15,22 +17,23 @@
                     <i class="fa fa-envelope prefix grey-text"></i>
                     {{ form_widget(form.email) }}
                     {{ form_label(form.email, 'register__email') }}
-                    {{ form_errors(form.email) }}
+                    <div class="red-text">{{ form_errors(form.email, {'attr': {'class': 'red-text'}}) }}</div>
                 </div>
                 <div class="md-form">
                     <i class="fa fa-lock prefix grey-text"></i>
                     {{ form_widget(form.passwd.first) }}
                     {{ form_label(form.passwd.first, 'register__password') }}
-                    {{ form_errors(form.passwd.first) }}
+                    <div class="red-text">{{ form_errors(form.passwd.first) }}</div>
                 </div>
                 <div class="md-form">
                     <i class="fa fa-lock prefix grey-text"></i>
                     {{ form_widget(form.passwd.second) }}
                     {{ form_label(form.passwd.second, 'register__repeat_password') }}
-                    {{ form_errors(form.passwd.second) }}
+                    <div class="red-text">{{ form_errors(form.passwd.second) }}</div>
                 </div>
                 <div class="text-center mt-4">
-                    <button class="btn btn-primary" type="submit">{{ 'register__submit' }}</button>
+                    <button class="btn btn-success" type="submit">{{ 'register__submit' }}</button>
+                    <a href="{{ path('login') }}" class="btn btn-primary" >{{ 'register__login_redirect' }}</a>
                 </div>
                 {{ form_widget(form._token) }}
             </form>

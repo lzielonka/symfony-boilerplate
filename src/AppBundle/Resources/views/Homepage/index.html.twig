@@ -9,8 +9,9 @@
         </div>
     </div>
     <h1>{{ 'homepage__homepage_header'|trans }}</h1>
-    <a href="{{ path('logout') }}">{{ 'homepage__logout'|trans }}</a>
-    <a href="{{ path('register') }}">{{ 'homepage__register'|trans }}</a>
+    <a class="btn btn-md btn-primary" href="{{ path('logout') }}">{{ 'homepage__logout'|trans }}</a>
+    <br/>
+    {#<a href="{{ path('register') }}">{{ 'homepage__register'|trans }}</a>#}
     {% for account in accounts %}
         {{ account.email }}<br/>
     {% endfor %}

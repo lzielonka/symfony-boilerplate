@@ -23,7 +23,7 @@ class RegisterType extends AbstractType
                     'class' => 'form-control',
                     'type' => 'email'
                 ],
-                'constraints' => [new EmailUnique, new EmailFormat]
+                'constraints' => [new EmailUnique, new EmailFormat],
             ])
             ->add('passwd', RepeatedType::class, [
                 'type' => PasswordType::class,

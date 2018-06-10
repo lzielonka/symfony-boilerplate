@@ -35,7 +35,7 @@ class Account extends BaseAccount implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_ADMIN'];
+        return ['ROLE_USER'];
     }
 
     /**
