@@ -13,6 +13,15 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
+    <table name="product" idMethod="native" phpName="Product">
+        <column name="product_id" phpName="ProductId" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+        <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+        <column name="price" phpName="Price" type="DECIMAL" size="20" scale="2" required="true"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
     <table name="account_book" idMethod="native" phpName="AccountBook">
         <column name="account_id" phpName="AccountId" type="INTEGER" sqlType="int(11) unsigned" required="true"/>
         <column name="book_id" phpName="BookId" type="INTEGER" sqlType="int(11) unsigned" required="true"/>

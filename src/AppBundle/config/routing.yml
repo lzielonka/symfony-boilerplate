@@ -20,6 +20,16 @@ homepage:
     path:     /
     defaults: { _controller: AppBundle:Homepage\Homepage:index }
 
+# product
+
+product.list:
+    path:     /product/list/{page}
+    defaults: { _controller: AppBundle:Product\Product:list, page: 1}
+
+product.new:
+    path:     /admin/new-product
+    defaults: { _controller: AppBundle:Product\Product:new }
+
 # api
 
 accounts:

@@ -5,8 +5,17 @@ security:
     providers:
         account_provider:
             id: account_provider
+        in_memory:
+            memory:
+                users:
+                    admin:
+                        password: admin
+                        roles: 'ROLE_ADMIN'
 
     encoders:
+         #admin in_memory
+         Symfony\Component\Security\Core\User\User: plaintext
+         #regular account
          AppBundle\Database\Propel\Model\Account:
              algorithm: sha256
              encode_as_base64: false
@@ -20,8 +29,12 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        admin:
+            pattern: ^/admin*
+            provider: in_memory
+            http_basic: true
         main:
+            pattern: ^/*
             anonymous: ~
             form_login:
                 login_path: login

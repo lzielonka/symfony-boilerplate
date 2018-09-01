@@ -10,6 +10,7 @@ use AppBundle\Repositories\Interfaces\AccountRepositoryInterface;
 
 class AccountRepository implements AccountRepositoryInterface
 {
+    /** @var AbstractModelManager */
     private $modelManager;
 
     public function __construct(AbstractModelManager $modelManager)
@@ -31,7 +32,7 @@ class AccountRepository implements AccountRepositoryInterface
      * @param string $email
      * @return Account|null
      */
-    public function fetchOneByEmail(string $email)
+    public function fetchOneByEmail(string $email): ?Account
     {
         $query = AccountQuery::create()->filterByEmail($email);
 

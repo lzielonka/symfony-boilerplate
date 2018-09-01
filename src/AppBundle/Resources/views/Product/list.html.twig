@@ -1,0 +1,35 @@
+{% extends '@App/Base/base.html.twig' %}
+
+{% block title %}{{ 'product_list_title'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'product_list_header'|trans }}</h1>
+    <a href="{{ path('product.new') }}" class="btn btn-primary">{{ 'create_new'|trans }}</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>{{ 'product_name'|trans }}</th>
+                <th>{{ 'product_description'|trans }}</th>
+                <th>{{ 'product_price'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <th scope="row">{{ product.productId }}</th>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {{ include('@App/Base/partials/paginator.html.twig', {paginator: products, route: 'product.list'}) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

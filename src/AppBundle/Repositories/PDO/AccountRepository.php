@@ -19,6 +19,9 @@ class AccountRepository implements AccountRepositoryInterface
         $this->modelClass = Account::class;
     }
 
+    /**
+     * @return array
+     */
     public function fetchAll()
     {
         $sql = "SELECT * FROM account";
@@ -31,7 +34,7 @@ class AccountRepository implements AccountRepositoryInterface
      * @param string $email
      * @return null|Account
      */
-    public function fetchOneByEmail(string $email)
+    public function fetchOneByEmail(string $email): ?Account
     {
         $sql = "SELECT * FROM account where email = :email limit 1";
         $statement = $this->manager->executeSql($sql, [':email' => $email]);

@@ -14,4 +14,29 @@ services:
 
     account_fetcher:
       class: AppBundle\Services\Account\AccountFetcher
-      arguments: ["@pdo.account_repository"]
+      arguments: ["@propel.account_repository"]
+
+# email
+    email_manager:
+      class: AppBundle\Services\Email\EmailManager\EmailManager
+      arguments: ['@swiftmailer_client']
+
+    swiftmailer_client:
+      class: AppBundle\Services\Email\Clients\SwiftMailerClient
+      arguments: ['@swiftmailer.mailer']
+
+# product
+    product_fetcher:
+      class: AppBundle\Services\Product\ProductFetcher
+      arguments: ["@propel.product_repository"]
+
+    currency_resolver:
+      class: AppBundle\Services\Product\CurrencyResolver
+      arguments: ['%locale%']
+
+    product_form:
+        class: AppBundle\Form\ProductType
+        arguments:
+          - '@currency_resolver'
+        tags:
+          - { name: form.type }

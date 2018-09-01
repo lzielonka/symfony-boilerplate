@@ -1,0 +1,12 @@
+{% if paginator.haveToPaginate() %}
+    <nav aria-label="pagination example">
+        <ul class="pagination pg-blue">
+            {% set currentPage = paginator.getPage() %}
+            {% for link in paginator.getLinks(5) %}
+                <li class="page-item {{ currentPage == link  ? 'active' }}">
+                    <a class="page-link" href="{{ path(route, {'page': link}) }}">{{ link }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endif %}

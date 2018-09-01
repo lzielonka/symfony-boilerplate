@@ -1,0 +1,37 @@
+{% extends '@App/Base/base.html.twig' %}
+
+{% block title %}{{ 'product_add_title'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">&nbsp;</div>
+            <div class="col-md-6 col-sm-12">
+                <form action="{{ path('product.new') }}" method="POST">
+                    <p class="h4 text-center mb-4">{{ 'create_new_product'|trans }}</p>
+                    <div class="md-form">
+                        {{ form_widget(form.name) }}
+                        {{ form_label(form.name, 'name') }}
+                        <div class="red-text">{{ form_errors(form.name, {'attr': {'class': 'red-text'}}) }}</div>
+                    </div>
+                    <div class="md-form">
+                        {{ form_widget(form.description) }}
+                        {{ form_label(form.description, 'description') }}
+                        <div class="red-text">{{ form_errors(form.description, {'attr': {'class': 'red-text'}}) }}</div>
+                    </div>
+                    <div class="md-form">
+                        <i class="prefix grey-text"></i>
+                        {{ form_widget(form.price) }}
+                        {{ form_label(form.price, 'price') }}
+                        <div class="red-text">{{ form_errors(form.price) }}</div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-success" type="submit">{{ 'create_product' }}</button>
+                    </div>
+                    {{ form_widget(form._token) }}
+                </form>
+            </div>
+            <div class="col-md-3">&nbsp;</div>
+        </div>
+    </div>
+{% endblock %}
