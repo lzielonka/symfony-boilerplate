@@ -4,8 +4,6 @@ namespace AppBundle\Repositories\Propel;
 
 use AppBundle\Database\Propel\Collection\ObjectCollection;
 use AppBundle\Database\Propel\Manager\Base\AbstractModelManager;
-use AppBundle\Database\Propel\Model\Account;
-use AppBundle\Database\Propel\Model\AccountQuery;
 use AppBundle\Database\Propel\Model\Product;
 use AppBundle\Database\Propel\Model\ProductQuery;
 use AppBundle\Repositories\Interfaces\ProductRepositoryInterface;
@@ -23,11 +21,11 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     /**
-     * @return ObjectCollection|Account[]
+     * @return ObjectCollection|Product[]
      */
     public function fetchAll()
     {
-        $query = AccountQuery::create();
+        $query = ProductQuery::create();
 
         return $this->modelManager->find($query);
     }
