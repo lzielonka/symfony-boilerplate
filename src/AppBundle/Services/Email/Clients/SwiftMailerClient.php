@@ -15,7 +15,8 @@ class SwiftMailerClient implements EmailClientInterface
         $this->mailer = $mailer;
     }
 
-    public function sendEmail(EmailDTO $emailDTO) {
+    public function sendEmail(EmailDTO $emailDTO)
+    {
         $message = new \Swift_Message;
         $message
             ->setFrom($emailDTO->sender)

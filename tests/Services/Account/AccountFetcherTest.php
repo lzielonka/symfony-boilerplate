@@ -7,11 +7,10 @@ use AppBundle\Repositories\Interfaces\AccountRepositoryInterface;
 use AppBundle\Services\Account\AccountFetcher;
 use PHPUnit_Framework_MockObject_MockObject;
 use Propel\Runtime\Collection\ObjectCollection;
-use Tests\PrivateAccessTestCase;
 use Tests\Stubs\Account\AccountStub;
 use Tests\Stubs\ObjectCollectionStub;
 
-class CustomerFetcherTest extends PrivateAccessTestCase
+class AccountFetcherTest extends \PHPUnit_Framework_TestCase
 {
     /** @var AccountFetcher */
     private $accountFetcher;
@@ -24,7 +23,7 @@ class CustomerFetcherTest extends PrivateAccessTestCase
         $this->accountFetcher = new AccountFetcher($this->accountRepository);
     }
 
-    public function testFetchAllAccounts()
+    public function testFetchAll(): void
     {
         $oc = new ObjectCollectionStub;
         $oc->append(new AccountStub);
@@ -35,14 +34,14 @@ class CustomerFetcherTest extends PrivateAccessTestCase
             ->willReturn($oc);
 
         /** @var ObjectCollection $result */
-        $result = $this->accountFetcher->fetchAllAccounts();
+        $result = $this->accountFetcher->fetchAll();
 
         $this->assertInstanceOf(ObjectCollection::class, $result);
         $this->assertEquals(1, $result->count());
         $this->assertInstanceOf(Account::class, $result->getFirst());
     }
 
-    public function testFetchOneByEmail()
+    public function testFetchOneByEmail(): void
     {
         $this->accountRepository
             ->expects($this->once())

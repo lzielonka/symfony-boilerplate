@@ -18,7 +18,7 @@ class AccountFetcher
         $this->accountRepository = $accountRepository;
     }
 
-    public function fetchAllAccounts()
+    public function fetchAll()
     {
         return $this->accountRepository->fetchAll();
     }
